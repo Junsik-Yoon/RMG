@@ -13,6 +13,7 @@ public class Encounter : MonoBehaviour
     {
         if(other.gameObject.tag == "Monster")
         {
+            
             gameObject.GetComponent<PlayerMove>().speed =0f;
             enemyData =other.gameObject.GetComponent<MonsterEncounter>().enemyObjectData ;
             spwanManager.SpawnDestroy();

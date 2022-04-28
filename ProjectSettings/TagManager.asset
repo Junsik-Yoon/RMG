@@ -11,6 +11,8 @@ TagManager:
   - Monster
   - forestwarp
   - villagewarp
+  - BattleManager
+  - Companion
   layers:
   - Default
   - TransparentFX
@@ -50,6 +52,9 @@ TagManager:
     locked: 0
   - name: collider
     uniqueID: 1568286957
+    locked: 0
+  - name: TimeMap
+    uniqueID: 3352122213
     locked: 0
   - name: Characters
     uniqueID: 2425651459

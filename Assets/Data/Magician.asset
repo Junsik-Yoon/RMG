@@ -16,8 +16,8 @@ MonoBehaviour:
   name: "\uB9C8\uBC95\uC0AC"
   HP: 100
   minAgility: 4.5
-  maxAgility: 9.5
+  maxAgility: 8.5
   agility: 0
   DefaultAgility: 0
-  damage: 100
+  damage: 30
   elementalAttribute: 2

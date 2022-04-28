@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869315837
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -6598946016331564889, guid: 23748c298f885bf4c89671f6d30f562b,
     type: 3}
@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1eb79a9e2bdfde4fb4688f6c5331bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spwanManager: {fileID: 0}
 --- !u!114 &5010592507053322165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,10 +170,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83e75354986121459d2c27f75a8f24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosive: {fileID: 3459353269473970399, guid: fd3383d7acd6cc844809c398eeb49d41,
+  explosive: {fileID: 7519254335724054614, guid: 923ae3e7c71364a449997ec94d1cb82c,
     type: 3}
   isTurn: 0
-  moveSpeed: 10
+  moveSpeed: 15
 --- !u!114 &3377587866821075555
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public class BattleManager : MonoBehaviour
     bool isBattleStarted=false;
     public bool isBattlePaused=false;
     
+    GameObject currentTurnPlayer = null;
 
     //List<BattleObjectData> playerUnits;
 
@@ -56,9 +57,9 @@ public class BattleManager : MonoBehaviour
     {
         Text[] playerTeamStatus = playerStatusUI.GetComponentsInChildren<Text>();
         Debug.Log(playerOnField.Count);
-        playerTeamStatus[0].text = playerOnField[0].playerName + "  "+ playerOnField[0].curHP+" / "+playerOnField[0].maxHP;
-        playerTeamStatus[1].text = playerOnField[1].playerName + "  "+ playerOnField[1].curHP+" / "+playerOnField[1].maxHP;
-        playerTeamStatus[2].text = playerOnField[2].playerName + "  "+ playerOnField[2].curHP+" / "+playerOnField[2].maxHP;
+        playerTeamStatus[0].text = playerOnField[0].playerName + "    "+ playerOnField[0].curHP+" / "+playerOnField[0].maxHP;
+        playerTeamStatus[1].text = playerOnField[1].playerName + "    "+ playerOnField[1].curHP+" / "+playerOnField[1].maxHP;
+        playerTeamStatus[2].text = playerOnField[2].playerName + "    "+ playerOnField[2].curHP+" / "+playerOnField[2].maxHP;
     }
     public void SetBattleUnits(BattleObjectData enemy, Player player)
     {
@@ -232,6 +233,7 @@ public class BattleManager : MonoBehaviour
         isBattlePaused=true;  //순서대기 agilityCounter중지
         if(battleObject.tag == "Player" || battleObject.tag == "Companion")
         {
+            
             PlayerTurn(battleObject);
         }
         else
@@ -242,6 +244,7 @@ public class BattleManager : MonoBehaviour
 
     private void PlayerTurn(GameObject battleObject)
     {
+        currentTurnPlayer = battleObject;
         playerTurnUI.gameObject.SetActive(true);
         btns =playerTurnUI.GetComponentsInChildren<Button>();
         for(int i=0;i<btns.Length;++i)
@@ -252,14 +255,46 @@ public class BattleManager : MonoBehaviour
     }
     private void EnemyTurn(GameObject battleObject)
     {
+
         Monster monster = battleObject.GetComponent<Monster>();
         Vector2 dir = (playerSpawnSpot[0].position-(Vector3)monster.battlePos).normalized;
         EnemyMoveBattle eMove = battleObject.GetComponent<EnemyMoveBattle>();
-        eMove.Approach(dir);
+
+        if(battleObject.name == "Magician(Clone)")
+        {
+
+            for(int i=0; i<3;++i)
+            {
+                dir = (playerSpawnSpot[i].position-(Vector3)monster.battlePos).normalized;
+                eMove.Approach(dir);
+                playerOnField[i].curHP -= monster.damage;
+            
+            }
+            StartCoroutine(WaitForNextMove());
+        }
+        else if (battleObject.name == "OgreMan(Clone)")
+        {
+            dir = (playerSpawnSpot[0].position-(Vector3)monster.battlePos).normalized;
+
+            eMove.Approach(dir);
+            for(int i=0; i<3;++i)
+            {
+                playerOnField[i].curHP -= monster.damage;
+            }
+            
+        }
+        else
+        {
+            dir = (playerSpawnSpot[0].position-(Vector3)monster.battlePos).normalized;
+
+            eMove.Approach(dir);
+            playerOnField[0].curHP -=monster.damage;
+        }
+        
         eMove.isTurn=true;
 
         ///////테스트용코드
-        playerOnField[0].curHP -=monster.damage;
+        
     }
 
 
@@ -296,12 +331,7 @@ public class BattleManager : MonoBehaviour
             btns[i].gameObject.SetActive(false);
         }
 
-        //playerTurnUI = null;
-
-        //monsterStatusUI = null;
-
-        //playerStatusUI = null;
-
+  
 
              
         isBattleStarted=false;
@@ -382,26 +412,25 @@ public class BattleManager : MonoBehaviour
     public void AttackMonster(int index)
     {
         Vector2 dir;
-        PlayerMoveBattle pMove;
+        PlayerMoveBattle pMove = currentTurnPlayer.GetComponent<PlayerMoveBattle>();
         switch(index)
         {
-            case 0:dir = (enemySpawnSpot[0].position - playerSpawnSpot[0].position).normalized;
-                    pMove = playerOnField[0].GetComponent<PlayerMoveBattle>();
+            case 0:dir = (enemySpawnSpot[0].position - currentTurnPlayer.transform.position).normalized;
                     pMove.Approach(dir);
                     pMove.isTurn=true;
             break;
-            case 1:dir = (enemySpawnSpot[1].position - playerSpawnSpot[0].position).normalized;
-                    pMove = playerOnField[0].GetComponent<PlayerMoveBattle>();
+            case 1:dir = (enemySpawnSpot[1].position - currentTurnPlayer.transform.position).normalized;
+                    
                     pMove.Approach(dir);
                     pMove.isTurn=true;
             break;
-            case 2:dir = (enemySpawnSpot[2].position - playerSpawnSpot[0].position).normalized;
-                    pMove = playerOnField[0].GetComponent<PlayerMoveBattle>();
+            case 2:dir = (enemySpawnSpot[2].position - currentTurnPlayer.transform.position).normalized;
+                    
                     pMove.Approach(dir);
                     pMove.isTurn=true;
             break;
         }
-        enemyOnField[index].curHP -=playerOnField[0].damage;
+        enemyOnField[index].curHP -=currentTurnPlayer.GetComponent<Player>().damage;
     }
     public void ShowSelectedMonster(int index)
     {
@@ -432,24 +461,24 @@ public class BattleManager : MonoBehaviour
     public void UseSkill(int index)
     {
         Vector2 dir;
-        PlayerMoveBattle pMove;
+        PlayerMoveBattle pMove = currentTurnPlayer.GetComponent<PlayerMoveBattle>();
         switch(index)
         {
-            case 0:dir = (enemySpawnSpot[0].position - playerSpawnSpot[0].position).normalized;
-                    pMove = playerOnField[0].GetComponent<PlayerMoveBattle>();
+            case 0:dir = (enemySpawnSpot[0].position - currentTurnPlayer.transform.position).normalized;
+                   
                     pMove.UseSkill(dir);
                     
             break;
-            case 1:dir = (enemySpawnSpot[1].position - playerSpawnSpot[0].position).normalized;
-                    pMove = playerOnField[0].GetComponent<PlayerMoveBattle>();
+            case 1:dir = (enemySpawnSpot[1].position - currentTurnPlayer.transform.position).normalized;
+                    
                     pMove.UseSkill(dir);
             break;
-            case 2:dir = (enemySpawnSpot[2].position - playerSpawnSpot[0].position).normalized;
-                    pMove = playerOnField[0].GetComponent<PlayerMoveBattle>();
+            case 2:dir = (enemySpawnSpot[2].position - currentTurnPlayer.transform.position).normalized;
+                    
                     pMove.UseSkill(dir);
                     
             break;
-        }enemyOnField[index].curHP-=playerOnField[0].damage*2;
+        }enemyOnField[index].curHP-=currentTurnPlayer.GetComponent<Player>().damage*2;
     }
     public void SelectItem()
     {
@@ -465,7 +494,11 @@ public class BattleManager : MonoBehaviour
     {
         //확률로 도망 가능하도록
         PlayerTurnUIOFF();
+        BattleEnd();
     }
 
-    
+    IEnumerator WaitForNextMove()
+    {
+        yield return new WaitForSeconds(1f);
+    }
 }

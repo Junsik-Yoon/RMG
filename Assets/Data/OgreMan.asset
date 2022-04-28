@@ -19,5 +19,5 @@ MonoBehaviour:
   maxAgility: 6.6
   agility: 0
   DefaultAgility: 0
-  damage: 40
+  damage: 30
   elementalAttribute: 2
