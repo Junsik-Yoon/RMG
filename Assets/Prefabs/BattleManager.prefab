@@ -590,6 +590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc1fcf31ef83464aa64d830f0a2f35a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childBattleUI: {fileID: 1670739498911067968}
+  childAgilBar: {fileID: 1670739498168330832}
   companionDex: {fileID: 11400000, guid: db3f8040cc745f64a8c4dc66051a1912, type: 2}
   companionPower: {fileID: 11400000, guid: caaee9d8a35550542a076b62ccec8d8c, type: 2}
   playerAgilityBars:
@@ -1238,7 +1240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1670739498168330844
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2027,12 +2029,12 @@ GameObject:
   - component: {fileID: 1670739498911067982}
   - component: {fileID: 1670739498911067983}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: BattleUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1670739498911067980
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2417,7 +2419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1670739499128904278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2516,7 +2518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.00000047684, y: 3.9000244}
+  m_AnchoredPosition: {x: -0, y: 3.9000244}
   m_SizeDelta: {x: 104.46332, y: 64.56557}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &1670739499158975747

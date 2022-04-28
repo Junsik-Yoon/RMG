@@ -37,9 +37,12 @@ public class GameManager : MonoBehaviour
     {
         store.SetActive(active);
     }
+
     public void ResetBM(GameObject battleManager)
     {
         Destroy(battleManager);
-        Instantiate(battleMgr,new Vector3(0,0,0),Quaternion.identity);
+        BattleManager obj = Instantiate(battleMgr,new Vector3(43.5f,2,0),Quaternion.identity);
+        obj.childAgilBar.gameObject.SetActive(false);
+        obj.childBattleUI.gameObject.SetActive(false);
     }
 }

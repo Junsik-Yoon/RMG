@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    private static CameraManager _instance;
+
+    public static CameraManager instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+    private void Awake()
+    {   
+        DontDestroyOnLoad(gameObject);
+        _instance = this;
+    }
   public Camera maincamera;
   public Camera battlecamera;
 

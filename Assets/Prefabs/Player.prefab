@@ -293,4 +293,4 @@ MonoBehaviour:
   explosive: {fileID: 3459353269473970399, guid: fd3383d7acd6cc844809c398eeb49d41,
     type: 3}
   isTurn: 0
-  moveSpeed: 1
+  moveSpeed: 10

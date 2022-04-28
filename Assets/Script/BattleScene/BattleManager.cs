@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class BattleManager : MonoBehaviour
 {
+    public GameObject childBattleUI;
+    public GameObject childAgilBar;
+
     public BattleObjectData companionDex;
     public BattleObjectData companionPower;
     public GameObject[] playerAgilityBars;
@@ -46,17 +49,22 @@ public class BattleManager : MonoBehaviour
        // enemyUnits = new List<BattleObjectData>();
       //  battleTurn = new List<GameObject>();
         playerOnField = new List<Player>();
-        enemyOnField = new List<Monster>();
+        enemyOnField = new List<Monster>();   
     }
+
     public void PlayerStatusUpdate()
     {
         Text[] playerTeamStatus = playerStatusUI.GetComponentsInChildren<Text>();
+        Debug.Log(playerOnField.Count);
         playerTeamStatus[0].text = playerOnField[0].playerName + "  "+ playerOnField[0].curHP+" / "+playerOnField[0].maxHP;
-       // playerTeamStatus[1].text = playerOnField[1].playerName + "  "+ playerOnField[1].curHP+" / "+playerOnField[1].maxHP;
-       // playerTeamStatus[2].text = playerOnField[2].playerName + "  "+ playerOnField[2].curHP+" / "+playerOnField[2].maxHP;
+        playerTeamStatus[1].text = playerOnField[1].playerName + "  "+ playerOnField[1].curHP+" / "+playerOnField[1].maxHP;
+        playerTeamStatus[2].text = playerOnField[2].playerName + "  "+ playerOnField[2].curHP+" / "+playerOnField[2].maxHP;
     }
     public void SetBattleUnits(BattleObjectData enemy, Player player)
     {
+        childBattleUI.gameObject.SetActive(true);
+        childAgilBar.gameObject.SetActive(true);
+
         Button[] monsterButtons = monsterStatusUI.transform.GetComponentsInChildren<Button>();
         for(int i=0 ; i<Random.Range(1,4); ++i)
         {
@@ -112,16 +120,18 @@ public class BattleManager : MonoBehaviour
         companion1.curHP = companionDex.HP;
         companion1.damage = companionDex.damage;
         
-        playerOnField.Add(pObj);
+        playerOnField.Add(companion1);
 
         GameObject companion2Obj = Instantiate(companionPower.prefab,playerSpawnSpot[2].position,Quaternion.identity);
         companion2Obj.GetComponent<CircleCollider2D>().isTrigger=true;
-        Player companion2 = companion1Obj.GetComponent<Player>();
+        Player companion2 = companion2Obj.GetComponent<Player>();
         companion2.agilityBar = playerAgilityBars[2];
         companion2.curAgilBar  = companion2.agilityBar.transform.GetChild(0).GetComponent<Image>();
 
         companion2.curHP = companionPower.HP;
         companion2.damage = companionPower.damage;
+
+        playerOnField.Add(companion2);
         
 
         PlayerStatusUpdate();
@@ -322,11 +332,15 @@ public class BattleManager : MonoBehaviour
         //카메라매니저로 카메라 전환시키고
         //필드 초기화 -> 랜덤 다시 함수 여기서 호출
         
+        
         Debug.Log(playerOnField[0].curHP);
         Debug.Log("배틀종료");
         originalPlayer.curHP = playerOnField[0].curHP;
         //originalPlayer.SetUp(playerOnField[0]);
         Debug.Log("오리지날" + originalPlayer.curHP);
+
+        originalPlayer.gameObject.GetComponent<PlayerMove>().speed = 5f;
+
 
         isBattleStarted=false;
         //ResetBattle();
@@ -340,6 +354,8 @@ public class BattleManager : MonoBehaviour
             Destroy(enemyOnField[i].gameObject);
             enemyOnField[i]=null;
         }
+        CameraManager.instance.EndBattle();
+        SpwanManager.instance.Spawn();
         GameManager.instance.ResetBM(gameObject);
          
     }
