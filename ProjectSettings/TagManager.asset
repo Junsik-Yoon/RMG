@@ -11,6 +11,8 @@ TagManager:
   - Monster
   - forestwarp
   - villagewarp
+  - Companion
+  - BattleManager
   layers:
   - Default
   - TransparentFX
@@ -53,6 +55,9 @@ TagManager:
     locked: 0
   - name: Characters
     uniqueID: 2425651459
+    locked: 0
+  - name: Object
+    uniqueID: 1881196171
     locked: 0
   - name: NPC
     uniqueID: 4250941897
