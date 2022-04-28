@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1359610386005926155}
   - component: {fileID: 1359610386005926165}
   m_Layer: 0
-  m_Name: Encounter2
+  m_Name: EncounterMagic
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,4 +70,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f73b6b3c784182418374c3a644e976e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyObjectData: {fileID: 11400000, guid: 13ce84c7dabb4fe4e9df22a2de66fc03, type: 2}
+  enemyObjectData: {fileID: 11400000, guid: c66f4b4a0f22e514c8575ff80eded8ce, type: 2}

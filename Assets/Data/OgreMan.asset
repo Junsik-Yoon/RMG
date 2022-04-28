@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f98ffe5c5a246dc46acb4939cc550e9b, type: 3}
-  m_Name: Dracula
+  m_Name: OgreMan
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3070550250112975341, guid: 56067b4955aa0234b9b8cab9a727d9cc, type: 3}
-  name: "\uB4DC\uB77C\uD058\uB77C"
-  HP: 100
-  minAgility: 2.9
-  maxAgility: 5.5
+  prefab: {fileID: 3567558417957634452, guid: a73df9dfdac9eb44abb5f384bd7579f8, type: 3}
+  name: "\uC624\uC6B0\uAC70\uB9E8"
+  HP: 150
+  minAgility: 4.4
+  maxAgility: 6.6
   agility: 0
   DefaultAgility: 0
-  damage: 20
+  damage: 40
   elementalAttribute: 2

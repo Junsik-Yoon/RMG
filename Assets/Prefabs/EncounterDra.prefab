@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6562402552469730545}
   - component: {fileID: 6562402552469730543}
   m_Layer: 0
-  m_Name: Encounter
+  m_Name: EncounterDra
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

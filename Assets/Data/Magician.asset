@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f98ffe5c5a246dc46acb4939cc550e9b, type: 3}
-  m_Name: Dracula
+  m_Name: Magician
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3070550250112975341, guid: 56067b4955aa0234b9b8cab9a727d9cc, type: 3}
-  name: "\uB4DC\uB77C\uD058\uB77C"
+  prefab: {fileID: 5643720421527727076, guid: a655e6fef37fc5947beff49fcadc59ed, type: 3}
+  name: "\uB9C8\uBC95\uC0AC"
   HP: 100
-  minAgility: 2.9
-  maxAgility: 5.5
+  minAgility: 4.5
+  maxAgility: 9.5
   agility: 0
   DefaultAgility: 0
-  damage: 20
+  damage: 100
   elementalAttribute: 2

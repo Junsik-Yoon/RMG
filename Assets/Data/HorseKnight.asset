@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HorseKnight
   m_EditorClassIdentifier: 
   prefab: {fileID: 4637920142435415333, guid: a0b476fb6a331464d9b098badf4f4955, type: 3}
-  name: "\uB9D0\uAE30\uC0AC"
+  name: "\uB9D0\uD0C4\uAE30\uC0AC"
   HP: 200
   minAgility: 1.2
   maxAgility: 4.1
