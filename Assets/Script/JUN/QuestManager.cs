@@ -49,7 +49,7 @@ private Quest curQuest;
         Debug.Log("퀘스트 완료");
         Debug.Log("경험치 보상 : " + quest.expReward);
         Debug.Log("골드 보상 :" + quest.goldReward);
-
+        SpwanManager.instance.SpawnBOSS();
        curQuest = null;
    }
    public void OnItemCollect(string itemName)

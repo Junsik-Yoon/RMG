@@ -19,6 +19,8 @@ public class SpwanManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         _instance = this;
     }
+
+    public GameObject enconterBOSS;
     public GameObject encounterDracula;
     public GameObject encounterHorse;
 
@@ -26,6 +28,7 @@ public class SpwanManager : MonoBehaviour
     public GameObject encounterOgre;
     public GameObject encounterArcher;
     public GameObject encounterMagician;
+    
     int randomX; //적이 나타날 X좌표를 랜덤으로 생성해 줍니다.
     int randomY; 
 
@@ -43,6 +46,11 @@ public class SpwanManager : MonoBehaviour
             StartCoroutine(SpawnWait());
 
             
+        }
+        public void SpawnBOSS()
+        {
+            
+            spawnPoints.Add(Instantiate(enconterBOSS,new Vector3(5.2f,30,0),Quaternion.identity));     
         }
         public void SpawnDestroy()
         {

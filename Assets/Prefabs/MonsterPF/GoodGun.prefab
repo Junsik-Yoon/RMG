@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 3174269994772114392}
   - component: {fileID: 2415562329012532280}
   - component: {fileID: 2305273462352465484}
+  - component: {fileID: -5953076726795036198}
   m_Layer: 0
   m_Name: GoodGun
   m_TagString: Monster
@@ -224,7 +225,7 @@ MonoBehaviour:
   defaultAgility: 0
   agility: 0
   maxHP: 0
-  curHP: 0
+  curHP: 1
   damage: 0
   index: 0
   battlePos: {x: 0, y: 0}
@@ -280,12 +281,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480b108f874800549a3713d31f29bd53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireball: {fileID: 0}
-  arrow: {fileID: 0}
-  smoke: {fileID: 0}
-  dog: {fileID: 0}
+  fireball: {fileID: 7561188718890818587, guid: d4462952302db2a4c82e64c36121f0d1,
+    type: 3}
+  arrow: {fileID: 4719673231536222077, guid: a104f0ffe233e3143bb9a41afa523cf9, type: 3}
+  smoke: {fileID: 5327465037007835503, guid: 06c9bc011b7cd474bb2b2ddf2a73fddf, type: 3}
+  dog: {fileID: 5402133242301368053, guid: fd88fa85d67c2cd4385b20b61ae33e06, type: 3}
   isTurn: 0
   moveSpeed: 10
+--- !u!114 &-5953076726795036198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5411642293903142025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce35cb08b842b844b021bf446a429b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5411654678605294491
 GameObject:
   m_ObjectHideFlags: 0

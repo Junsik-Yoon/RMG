@@ -35,5 +35,8 @@ public class Player : MonoBehaviour
             isDead=true;
         }
     }
-    
+    public void SetMaxHP()
+    {
+        curHP = maxHP;
+    }
 }

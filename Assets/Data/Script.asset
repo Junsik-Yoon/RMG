@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Script
   m_EditorClassIdentifier: 
   name: Script
-  icon: {fileID: 2607994691028543399, guid: d19738b71c904c1408c14adc0864ebce, type: 3}
+  icon: {fileID: -7435880981489845281, guid: 69265217f670443468952a1894fdf5a7, type: 3}
   prefab: {fileID: 8193803163222194872, guid: a2946dd1d4f54394d9ef44bb2fffb964, type: 3}

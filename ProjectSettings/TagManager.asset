@@ -13,6 +13,7 @@ TagManager:
   - villagewarp
   - BattleManager
   - Companion
+  - Heal
   layers:
   - Default
   - TransparentFX

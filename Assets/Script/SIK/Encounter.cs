@@ -17,9 +17,14 @@ public class Encounter : MonoBehaviour
             gameObject.GetComponent<PlayerMove>().speed =0f;
             enemyData =other.gameObject.GetComponent<MonsterEncounter>().enemyObjectData ;
             spwanManager.SpawnDestroy();
-            CameraManager.instance.OnBattle();
-            GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>().SetBattleUnits(enemyData, gameObject.GetComponent<Player>());
+            InfomationManager.instance.Notice(enemyData.name + "을(를) 만났다",1);
+            StartCoroutine(Wait());
         }
     }
-
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1);
+        GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>().SetBattleUnits(enemyData, gameObject.GetComponent<Player>());
+        CameraManager.instance.OnBattle();
+    }
 }

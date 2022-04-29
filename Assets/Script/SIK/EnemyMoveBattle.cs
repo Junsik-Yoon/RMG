@@ -57,9 +57,32 @@ public class EnemyMoveBattle : MonoBehaviour
         }
         else if(gameObject.name == "GoodGun(Clone)")
         {
-            prevPos = transform.position;
-            dir = _dir;
-            isMoving=true;
+            int pattern = Random.Range(1,6);
+
+            switch(pattern)
+            {
+                case 1:
+                        prevPos = transform.position;
+                        dir = _dir;
+                        isMoving=true;
+                break;
+
+                case 2:
+                        Instantiate(dog,transform.position,Quaternion.identity).GetComponent<Dog>().SetDir(_dir);
+                break;
+                case 3:
+                        Instantiate(arrow,transform.position,Quaternion.identity).GetComponent<Arrow>().SetDir(_dir);
+                break;
+                case 4:
+                        Instantiate(fireball,transform.position,Quaternion.identity).GetComponent<Fireball>().SetDir(_dir);
+                break;
+                case 5:
+                        prevPos = transform.position;
+                        StartCoroutine(Crash());
+                break;
+            }
+
+
         }
 
 

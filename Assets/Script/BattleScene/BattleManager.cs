@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour
 {
     public GameObject childBattleUI;
@@ -67,7 +68,17 @@ public class BattleManager : MonoBehaviour
         childAgilBar.gameObject.SetActive(true);
 
         Button[] monsterButtons = monsterStatusUI.transform.GetComponentsInChildren<Button>();
-        for(int i=0 ; i<Random.Range(1,4); ++i)
+        int repeat;
+        if(enemy.name == "굳건이")
+        {
+            repeat = 1;
+        }
+        else
+        {
+            repeat = Random.Range(1,4);
+        }
+         
+        for(int i=0 ; i<repeat; ++i)
         {
             GameObject enemyObj = Instantiate(enemy.prefab,enemySpawnSpot[i].position,Quaternion.identity);
             Monster monster = enemyObj.GetComponent<Monster>();
@@ -177,6 +188,7 @@ public class BattleManager : MonoBehaviour
             }
             if(deadCount==enemyOnField.Count)
             {
+                QuestManager.instance.OnItemCollect("Monster");
                 BattleEnd();
             }
             
@@ -187,7 +199,8 @@ public class BattleManager : MonoBehaviour
         {
             if(playerOnField[0].curHP<=0)
             {
-                BattleEnd();
+                //BattleEnd();
+                SceneManager.LoadScene("GameOverScene");
             }
         }
 
